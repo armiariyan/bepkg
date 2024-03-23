@@ -1,8 +1,9 @@
 package consul_test
 
 import (
-	"gitlab.com/gobang/bepkg/consul"
 	"testing"
+
+	"github.com/armiariyan/bepkg/consul"
 )
 
 func TestGenerate(t *testing.T) {

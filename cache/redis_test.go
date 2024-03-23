@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"gitlab.com/gobang/bepkg/logger"
+	"github.com/armiariyan/bepkg/logger"
 )
 
 var mockConf = Config{

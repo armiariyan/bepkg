@@ -1,9 +1,9 @@
 package consul
 
 import (
-	"gitlab.com/gobang/bepkg/consul/grpc"
-	"gitlab.com/gobang/bepkg/consul/http"
-	"gitlab.com/gobang/bepkg/consul/models"
+	"github.com/armiariyan/bepkg/consul/grpc"
+	"github.com/armiariyan/bepkg/consul/http"
+	"github.com/armiariyan/bepkg/consul/models"
 )
 
 type agent struct {

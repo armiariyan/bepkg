@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"gitlab.com/gobang/bepkg/otp"
+	"github.com/armiariyan/bepkg/otp"
 )
 
 // DefaultInterval set 30 as default

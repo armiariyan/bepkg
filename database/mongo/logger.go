@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"gitlab.com/gobang/bepkg/logger"
+	"github.com/armiariyan/bepkg/logger"
 	"go.uber.org/zap"
 )
 

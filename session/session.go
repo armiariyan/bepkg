@@ -2,14 +2,15 @@ package session
 
 import (
 	"fmt"
-	JsonIter "github.com/json-iterator/go"
-	Map "github.com/orcaman/concurrent-map"
-	"github.com/pkg/errors"
-	Logger "gitlab.com/gobang/bepkg/logger"
-	"go.uber.org/zap"
 	"reflect"
 	"strings"
 	"time"
+
+	Logger "github.com/armiariyan/bepkg/logger"
+	JsonIter "github.com/json-iterator/go"
+	Map "github.com/orcaman/concurrent-map"
+	"github.com/pkg/errors"
+	"go.uber.org/zap"
 )
 
 type Session struct {

@@ -3,8 +3,8 @@ package cache
 import (
 	"time"
 
+	"github.com/armiariyan/bepkg/logger"
 	"github.com/bradfitz/gomemcache/memcache"
-	"gitlab.com/gobang/bepkg/logger"
 	"go.uber.org/zap"
 )
 
@@ -13,7 +13,7 @@ type mcache struct {
 	logger logger.Logger
 }
 
-//NewMemcache create new memcache client
+// NewMemcache create new memcache client
 func NewMemcache(servers []string) Keyval {
 	mc := memcache.New(servers...)
 	return &mcache{

@@ -1,4 +1,4 @@
-module gitlab.com/gobang/bepkg
+module github.com/armiariyan/bepkg
 
 go 1.20
 
@@ -17,7 +17,6 @@ require (
 	github.com/orcaman/concurrent-map v0.0.0-20190314100340-2693aad1ed75
 	github.com/pkg/errors v0.8.1
 	github.com/stretchr/testify v1.4.0
-	gitlab.com/gobang/error v0.0.0-20210804155224-ac68e8e06eac
 	go.mongodb.org/mongo-driver v1.1.1
 	go.uber.org/zap v1.10.0
 	google.golang.org/grpc v1.31.0

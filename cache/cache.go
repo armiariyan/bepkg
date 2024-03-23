@@ -3,10 +3,10 @@ package cache
 import (
 	"time"
 
-	"gitlab.com/gobang/bepkg/logger"
+	"github.com/armiariyan/bepkg/logger"
 )
 
-//Keyval key value interface
+// Keyval key value interface
 type Keyval interface {
 	SetLogger(l logger.Logger)
 	Add(key string, val []byte, expiration time.Duration) error
@@ -15,7 +15,7 @@ type Keyval interface {
 	Get(key string) ([]byte, error)
 }
 
-//Topology Server topology usually for HA setup
+// Topology Server topology usually for HA setup
 type Topology int
 
 const (
@@ -27,7 +27,7 @@ const (
 	Sentinel
 )
 
-//SentinelConfig sentinel configuration data
+// SentinelConfig sentinel configuration data
 type SentinelConfig struct {
 	//Master or primary name
 	PrimaryName string
@@ -35,7 +35,7 @@ type SentinelConfig struct {
 	Addrs []string
 }
 
-//Config set config for cache
+// Config set config for cache
 type Config struct {
 	Timeout  time.Duration
 	AuthPass string
@@ -50,7 +50,7 @@ type Config struct {
 	PoolSize int
 }
 
-//Mock cache mockers
+// Mock cache mockers
 type Mock struct {
 	StubGet    func() ([]byte, error)
 	StubSet    func() error
@@ -58,17 +58,17 @@ type Mock struct {
 	StubDelete func() error
 }
 
-//SetLogger mocker
+// SetLogger mocker
 func (m *Mock) SetLogger(l logger.Logger) {}
 
-//Add Mocker
+// Add Mocker
 func (m *Mock) Add(key string, val []byte, expiration time.Duration) error { return m.StubAdd() }
 
-//Set mocker
+// Set mocker
 func (m *Mock) Set(key string, val []byte, expiration time.Duration) error { return m.StubSet() }
 
-//Delete mocker
+// Delete mocker
 func (m *Mock) Delete(key string) error { return m.StubDelete() }
 
-//Get mocker
+// Get mocker
 func (m *Mock) Get(key string) ([]byte, error) { return m.StubGet() }

@@ -2,9 +2,10 @@ package http
 
 import (
 	"fmt"
-	"github.com/hashicorp/consul/api"
-	"gitlab.com/gobang/bepkg/consul/models"
 	"time"
+
+	"github.com/armiariyan/bepkg/consul/models"
+	"github.com/hashicorp/consul/api"
 )
 
 func MustRegisterService(cs *models.Options) {

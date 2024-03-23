@@ -8,7 +8,7 @@ import (
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"gitlab.com/gobang/bepkg/logger"
+	"github.com/armiariyan/bepkg/logger"
 )
 
 type Trainer struct {

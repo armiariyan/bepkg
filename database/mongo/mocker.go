@@ -8,15 +8,15 @@ import (
 	"strings"
 	"time"
 
-	"gitlab.com/gobang/bepkg/logger"
+	"github.com/armiariyan/bepkg/logger"
 )
 
-//Mock mocking mongo client
+// Mock mocking mongo client
 type Mock struct {
 	stubs []mockStub
 }
 
-//MockResult mock result
+// MockResult mock result
 type MockResult struct {
 	Error         error
 	InsertedIDs   []string
@@ -36,28 +36,28 @@ type mockStub struct {
 	MockResult
 }
 
-//SetLogger implementation
+// SetLogger implementation
 func (conn *Mock) SetLogger(l logger.Logger) {}
 
-//Debug implementation
+// Debug implementation
 func (conn *Mock) Debug(d bool) {}
 
-//DB implementation
+// DB implementation
 func (conn *Mock) DB(dbName string) *connection { return nil }
 
-//Collection implementation
+// Collection implementation
 func (conn *Mock) Collection(collectionName string) (err error) { return nil }
 
-//Disconnect implementation
+// Disconnect implementation
 func (conn *Mock) Disconnect() (err error) { return nil }
 
-//GetContext implementation
+// GetContext implementation
 func (conn *Mock) GetContext() context.Context { return context.TODO() }
 
-//SetContext implementation
+// SetContext implementation
 func (conn *Mock) SetContext(c context.Context) {}
 
-//WithTimeout implementation
+// WithTimeout implementation
 func (conn *Mock) WithTimeout(timeSec time.Duration) context.CancelFunc { return func() {} }
 
 func (conn *Mock) getCaller(level int) string {
@@ -96,7 +96,7 @@ func (conn *Mock) setOutputVal(outputVal interface{}, setVal interface{}) (err e
 	return
 }
 
-//Stub stub any func name
+// Stub stub any func name
 func (conn *Mock) Stub(funcName string, filterMatch interface{}, result MockResult) {
 
 	conn.stubs = append(conn.stubs, mockStub{
@@ -106,7 +106,7 @@ func (conn *Mock) Stub(funcName string, filterMatch interface{}, result MockResu
 	})
 }
 
-//Find mock func
+// Find mock func
 func (conn *Mock) Find(filter interface{}, outputVal interface{}, opts ...*Options) (err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -117,7 +117,7 @@ func (conn *Mock) Find(filter interface{}, outputVal interface{}, opts ...*Optio
 	panic("Unsetted")
 }
 
-//FindOne mock func
+// FindOne mock func
 func (conn *Mock) FindOne(filter interface{}, outputVal interface{}, opts ...*Options) error {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -128,7 +128,7 @@ func (conn *Mock) FindOne(filter interface{}, outputVal interface{}, opts ...*Op
 	panic("Unsetted")
 }
 
-//FindOneAndDelete mock func
+// FindOneAndDelete mock func
 func (conn *Mock) FindOneAndDelete(filter interface{}, outputVal interface{}, opts ...*Options) error {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -139,7 +139,7 @@ func (conn *Mock) FindOneAndDelete(filter interface{}, outputVal interface{}, op
 	panic("Unsetted")
 }
 
-//FindOneAndReplace mock func
+// FindOneAndReplace mock func
 func (conn *Mock) FindOneAndReplace(filter, replacement interface{}, outputVal interface{}, opts ...*Options) error {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -150,7 +150,7 @@ func (conn *Mock) FindOneAndReplace(filter, replacement interface{}, outputVal i
 	panic("Unsetted")
 }
 
-//FindOneAndUpdate mock func
+// FindOneAndUpdate mock func
 func (conn *Mock) FindOneAndUpdate(filter, update interface{}, outputVal interface{}, opts ...*Options) error {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -161,7 +161,7 @@ func (conn *Mock) FindOneAndUpdate(filter, update interface{}, outputVal interfa
 	panic("Unsetted")
 }
 
-//InsertMany mock func
+// InsertMany mock func
 func (conn *Mock) InsertMany(documents []interface{}) (insertedIDs []string, err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) {
@@ -180,7 +180,7 @@ func (conn *Mock) InsertMany(documents []interface{}) (insertedIDs []string, err
 	panic("Unsetted")
 }
 
-//InsertOne mock func
+// InsertOne mock func
 func (conn *Mock) InsertOne(document interface{}) (insertedID string, err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.Document, document) {
@@ -190,7 +190,7 @@ func (conn *Mock) InsertOne(document interface{}) (insertedID string, err error)
 	panic("Unsetted")
 }
 
-//UpdateMany mock func
+// UpdateMany mock func
 func (conn *Mock) UpdateMany(filter, update interface{}) (modifiedCount int64, err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -200,7 +200,7 @@ func (conn *Mock) UpdateMany(filter, update interface{}) (modifiedCount int64, e
 	panic("unsetted")
 }
 
-//UpdateOne mock func
+// UpdateOne mock func
 func (conn *Mock) UpdateOne(filter, update interface{}, opts ...*Options) (upsertedID string, modifiedCount int64, err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -210,7 +210,7 @@ func (conn *Mock) UpdateOne(filter, update interface{}, opts ...*Options) (upser
 	panic("unsetted")
 }
 
-//ReplaceOne mock func
+// ReplaceOne mock func
 func (conn *Mock) ReplaceOne(filter, replacement interface{}, opts ...*Options) (upsertedID string, modifiedCount int64, err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -220,7 +220,7 @@ func (conn *Mock) ReplaceOne(filter, replacement interface{}, opts ...*Options) 
 	panic("unsetted")
 }
 
-//CountDocuments mock func
+// CountDocuments mock func
 func (conn *Mock) CountDocuments(filter interface{}, opts ...*Options) (total int64, err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -230,7 +230,7 @@ func (conn *Mock) CountDocuments(filter interface{}, opts ...*Options) (total in
 	panic("unsetted")
 }
 
-//DeleteOne mock func
+// DeleteOne mock func
 func (conn *Mock) DeleteOne(filter interface{}) (DeletedCount int64, err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -240,7 +240,7 @@ func (conn *Mock) DeleteOne(filter interface{}) (DeletedCount int64, err error) 
 	panic("unsetted")
 }
 
-//DeleteMany mock func
+// DeleteMany mock func
 func (conn *Mock) DeleteMany(filter interface{}) (DeletedCount int64, err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, filter) {
@@ -250,7 +250,7 @@ func (conn *Mock) DeleteMany(filter interface{}) (DeletedCount int64, err error)
 	panic("unsetted")
 }
 
-//Aggregate mock func
+// Aggregate mock func
 func (conn *Mock) Aggregate(pipeline interface{}, outputVal interface{}) (err error) {
 	for _, v := range conn.stubs {
 		if conn.stubMatchCaller(v) && reflect.DeepEqual(v.FilterMatch, pipeline) {

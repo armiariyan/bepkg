@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/armiariyan/bepkg/logger"
 	"github.com/mediocregopher/radix/v3"
-	"gitlab.com/gobang/bepkg/logger"
 )
 
 type rcache struct {
@@ -15,7 +15,7 @@ type rcache struct {
 	logger       logger.Logger
 }
 
-//NewRedis create redis client
+// NewRedis create redis client
 func NewRedis(cfg Config) (kv Keyval, err error) {
 	var conn radix.Client
 	var sentinelConn *radix.Sentinel

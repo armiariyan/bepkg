@@ -2,8 +2,9 @@ package grpc
 
 import (
 	"fmt"
+
+	"github.com/armiariyan/bepkg/consul/models"
 	"github.com/hashicorp/consul/api"
-	"gitlab.com/gobang/bepkg/consul/models"
 )
 
 func MustRegisterService(cs *models.Options) {

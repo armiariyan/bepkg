@@ -3,10 +3,11 @@ package rest
 import (
 	"crypto/tls"
 	"encoding/base64"
-	Session "gitlab.com/gobang/bepkg/session"
-	"gopkg.in/resty.v1"
 	"net/http"
 	"time"
+
+	Session "github.com/armiariyan/bepkg/session"
+	"gopkg.in/resty.v1"
 )
 
 type RestClient interface {

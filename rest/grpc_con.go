@@ -2,10 +2,11 @@ package rest
 
 import (
 	"context"
-	"google.golang.org/grpc"
 	"time"
 
-	Session "gitlab.com/gobang/bepkg/session"
+	"google.golang.org/grpc"
+
+	Session "github.com/armiariyan/bepkg/session"
 )
 
 const sessionKey = "session_key"

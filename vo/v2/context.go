@@ -5,9 +5,9 @@ import (
 
 	"github.com/labstack/echo/v4"
 
-	Response "gitlab.com/gobang/bepkg/response"
-	Session "gitlab.com/gobang/bepkg/session"
-	Error "gitlab.com/gobang/error"
+	Error "github.com/armiariyan/bepkg/error"
+	Response "github.com/armiariyan/bepkg/response"
+	Session "github.com/armiariyan/bepkg/session"
 )
 
 const AppSession = "App_Session"

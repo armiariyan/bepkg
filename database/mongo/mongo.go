@@ -9,7 +9,7 @@ import (
 	mo "go.mongodb.org/mongo-driver/mongo"
 	moOpts "go.mongodb.org/mongo-driver/mongo/options"
 
-	"gitlab.com/gobang/bepkg/logger"
+	"github.com/armiariyan/bepkg/logger"
 )
 
 type (
@@ -78,36 +78,36 @@ func (conn *connection) Collection(collectionName string) (err error) {
 // 	return v
 // }
 
-//Disconnect terminate connection with mongo client
+// Disconnect terminate connection with mongo client
 func (conn *connection) Disconnect() (err error) {
 	err = conn.client.Disconnect(conn.ctx)
 	return
 }
 
-//GetContext get connection context
+// GetContext get connection context
 func (conn *connection) GetContext() context.Context {
 	return conn.ctx
 }
 
-//SetContext set connection context
+// SetContext set connection context
 func (conn *connection) SetContext(c context.Context) {
 	conn.ctx = c
 }
 
-//WithTimeout set timeout based on context
+// WithTimeout set timeout based on context
 func (conn *connection) WithTimeout(timeSec time.Duration) context.CancelFunc {
 	ctx, cancel := context.WithTimeout(conn.ctx, timeSec*time.Second)
 	conn.ctx = ctx
 	return cancel
 }
 
-//WithTimeout set timeout based on context
+// WithTimeout set timeout based on context
 func (conn *connection) StartSession(c context.Context) (mo.Session, error) {
 	return conn.client.StartSession()
 }
 
-//Connect start a connection with mongodb based on uri
-//ex URI: mongodb://localhost:27017
+// Connect start a connection with mongodb based on uri
+// ex URI: mongodb://localhost:27017
 func Connect(ctx context.Context, URI string, opts ...ClientOptions) (mongoClient Client, err error) {
 
 	clientOptions := moOpts.Client().ApplyURI(URI)
@@ -152,8 +152,8 @@ func Connect(ctx context.Context, URI string, opts ...ClientOptions) (mongoClien
 	return
 }
 
-//ToTime convert mongo primitive datetime to native time.Time, return zero time if invalid
-//you may check zero time with Time.IsZero() function
+// ToTime convert mongo primitive datetime to native time.Time, return zero time if invalid
+// you may check zero time with Time.IsZero() function
 func ToTime(t interface{}) (time.Time, error) {
 	if s, ok := t.(primitive.DateTime); ok {
 		return s.Time(), nil
